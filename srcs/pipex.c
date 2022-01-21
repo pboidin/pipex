@@ -6,7 +6,7 @@
 /*   By: piboidin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 10:47:13 by piboidin          #+#    #+#             */
-/*   Updated: 2022/01/21 11:32:26 by piboidin         ###   ########.fr       */
+/*   Updated: 2022/01/21 12:07:43 by piboidin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,24 @@
 
 int	main(int argc, char **argv)
 {
+	int 	pipefd[2];
+	pid_f	cpid;
 	(void)argv;
+	
 	if (argc == 5)
 	{
 		ft_putstr("\x1b[32mOK Let's go in the Fonction Pipex\n\e[0m");
+		if (pipe(pipefd) == -1)
+		{
+			perror("Pipe");
+			exit();
+		}
+		cpid= fork();
+		if (cpid == -1)
+		{
+			perror("fork");
+			exit();
+		}
 	}
 	else
 	{
