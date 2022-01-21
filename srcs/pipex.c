@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	int 	pipefd[2];
-	pid_f	cpid;
+	pid_t	cpid;
 	(void)argv;
 	
 	if (argc == 5)
@@ -24,13 +24,13 @@ int	main(int argc, char **argv)
 		if (pipe(pipefd) == -1)
 		{
 			perror("Pipe");
-			exit();
+			exit(0);
 		}
 		cpid= fork();
 		if (cpid == -1)
 		{
 			perror("fork");
-			exit();
+			exit(0);
 		}
 	}
 	else

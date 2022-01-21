@@ -14,6 +14,8 @@
 # define PIPEX_H
 
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 void	ft_putstr(char *str);
 
