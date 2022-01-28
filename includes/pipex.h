@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: piboidin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/28 17:52:08 by piboidin          #+#    #+#             */
+/*   Updated: 2022/01/28 17:52:10 by piboidin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -5,6 +17,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 char	*ft_path(char *cmd, char **envp);
 char	*ft_strjoin(char const *s1, char const *s2);
