@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pipex_utils.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: piboidin <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 11:21:27 by piboidin          #+#    #+#             */
-/*   Updated: 2022/01/21 11:23:31 by piboidin         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "pipex.h"
 
-char	*path(char *cmd, char **envp)
+char	*ft_path(char *cmd, char **envp)
 {
 	char	**paths;
 	char	*path;
@@ -38,7 +26,7 @@ char	*path(char *cmd, char **envp)
 
 void	ft_error(void)
 {
-	perror("\033[31mError");
+	perror("Error");
 	exit(EXIT_FAILURE);
 }
 
@@ -47,18 +35,48 @@ void	ft_execute(char *argv, char **envp)
 	char **cmd;
 
 	cmd = ft_split(argv, ' ');
-	if (execve(path(cmd[0], envp), cmd, envp) == -1)
+	if (execve(ft_path(cmd[0], envp), cmd, envp) == -1)
 		ft_error();
 }
 
-void	ft_putstr(char *str)
+int		ft_opener(char *argv, int i)
 {
-	int	i;
+	int	fd;
+
+	fd = 0;
+	if (i == 0)
+		fd = open(argv, O_WRONLY | O_CREAT | O_APPEND, 0777);
+	else if (i == 1)
+		fd = open(argv, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	else if (i == 2)
+		fd = open(argv, O_RDONLY, 0777);
+	if (i == -1)
+		ft_error();
+	return (fd);
+}
+
+int		ft_get_next_line(char **line)
+{
+	char	c;
+	char	*buf;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (str[i])
+	buf = (char *)malloc(8000000);
+	if (!buf)
+		return (-1);
+	j = read(0, &c, 1);
+	while (c != '\n' && c != '\0' && j)
 	{
-		write(1, &str[i], 1);
+		if (c != '\n' && c != '\0')
+			buf[i] = c;
 		i++;
+		j = read(0, &c, 1);
 	}
+	buf[i] = '\n';
+	buf[i++] = '\0';
+	*line = buf;
+	free(buf);
+	return (j);
 }

@@ -24,12 +24,12 @@ all:	$(NAME_PIPEX)
 
 #		Convert .c to .o
 %.o:	%.c $(INCLUDES)
-		@$(CC) $(CFLAGS) -I $(INCLUDE_PATH) -c $< -o $@
+		@$(CC) $(CFLAGS) -I $(INCLUDES_PATH) -c $< -o $@
 
 #		Compile Pipex
 $(NAME_PIPEX):	$(INCLUDES) $(SRCS_OBJS)
 					@$(CC) $(CFLAGS) -I $(INCLUDES_PATH) $(SRCS_OBJS) -o $(NAME_PIPEX)
-					@echo "\x1b[31mPipex Created\n\e[0m"
+					@echo "\x1b[32mPipex Created"
 
 #		Clean
 clean:
