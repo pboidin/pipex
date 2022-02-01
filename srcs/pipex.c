@@ -6,7 +6,7 @@
 /*   By: piboidin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:59:43 by piboidin          #+#    #+#             */
-/*   Updated: 2022/01/28 16:37:14 by piboidin         ###   ########.fr       */
+/*   Updated: 2022/02/01 12:07:36 by piboidin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,13 @@ void	ft_here_doc(char *lim, int argc)
 	}
 }
 
-int main(int argc, char **argv, char **envp)
+void	ft_wrong_argmts(void)
+{
+	ft_putstr_fd("Wrong Arguments !!!\n", 2);
+	ft_putstr_fd("Waiting : File1 cmd1 cmd2 ... file2\n", 2);
+}
+
+int	main(int argc, char **argv, char **envp)
 {
 	int	i;
 	int	infile;
@@ -91,5 +97,5 @@ int main(int argc, char **argv, char **envp)
 		dup2(outfile, STDOUT_FILENO);
 		ft_execute(argv[argc - 2], envp);
 	}
-	printf("FUCK");
+	ft_wrong_argmts();
 }

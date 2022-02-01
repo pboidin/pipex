@@ -7,16 +7,16 @@ NAME_PIPEX		=	pipex
 -include make/srcs.mk
 
 #	Compilation
-CC				=	gcc
+CC			=	gcc
 CFLAGS			=	-Wall -Werror -Wextra
-AR				=	ar rcs
+AR			=	ar rcs
 
-INCLUDES_PATH	=	./includes
+INCLUDES_PATH		=	./includes
 
 SRCS_OBJS		=	$(SRCS_SOURCES:.c=.o)
 
 #	Delete
-RM				=	rm -rf
+RM			=	rm -rf
 
 #	RULES
 #		Defaults:
@@ -29,7 +29,7 @@ all:	$(NAME_PIPEX)
 #		Compile Pipex
 $(NAME_PIPEX):	$(INCLUDES) $(SRCS_OBJS)
 					@$(CC) $(CFLAGS) -I $(INCLUDES_PATH) $(SRCS_OBJS) -o $(NAME_PIPEX)
-					@echo "\x1b[32mPipex Created"
+					@echo "Pipex Created"
 
 #		Clean
 clean:
@@ -43,7 +43,6 @@ fclean:			clean
 
 #		Re
 re:				fclean all
-					@echo "Cleaned and rebuild everything for Pipex!"
 
 #		Generate .mk (Makefile includes)
 gmk:

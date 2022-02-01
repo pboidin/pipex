@@ -6,7 +6,7 @@
 /*   By: piboidin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:59:55 by piboidin          #+#    #+#             */
-/*   Updated: 2022/01/28 15:59:57 by piboidin         ###   ########.fr       */
+/*   Updated: 2022/02/01 11:39:40 by piboidin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_path(char *cmd, char **envp)
 	int		i;
 
 	i = 0;
-	while(ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (ft_strnstr(envp[i], "PATH", 4) == 0)
 		i++;
 	paths = ft_split(envp[i] + 5, ':');
 	i = 0;
@@ -44,14 +44,14 @@ void	ft_error(void)
 
 void	ft_execute(char *argv, char **envp)
 {
-	char **cmd;
+	char	**cmd;
 
 	cmd = ft_split(argv, ' ');
 	if (execve(ft_path(cmd[0], envp), cmd, envp) == -1)
 		ft_error();
 }
 
-int		ft_opener(char *argv, int i)
+int	ft_opener(char *argv, int i)
 {
 	int	fd;
 
@@ -67,7 +67,7 @@ int		ft_opener(char *argv, int i)
 	return (fd);
 }
 
-int		ft_get_next_line(char **line)
+int	ft_get_next_line(char **line)
 {
 	char	c;
 	char	*buf;
