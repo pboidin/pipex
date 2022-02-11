@@ -12,16 +12,6 @@
 
 #include "pipex.h"
 
-int	ft_len(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
@@ -30,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	join = (char *)malloc(sizeof(char) * (ft_len(s1) + ft_len(s2) + 1));
+	join = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!s1 || !s2 || !join)
 		return (0);
 	while (s1[i])

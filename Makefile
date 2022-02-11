@@ -7,16 +7,16 @@ NAME_PIPEX		=	pipex
 -include make/srcs.mk
 
 #	Compilation
-CC			=	gcc
+CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra
-AR			=	ar rcs
+AR				=	ar rcs
 
-INCLUDES_PATH		=	./includes
+INCLUDES_PATH	=	./includes
 
 SRCS_OBJS		=	$(SRCS_SOURCES:.c=.o)
 
 #	Delete
-RM			=	rm -rf
+RM				=	rm -rf
 
 #	RULES
 #		Defaults:

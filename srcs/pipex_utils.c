@@ -87,7 +87,7 @@ int	ft_get_next_line(char **line)
 		j = read(0, &c, 1);
 	}
 	buf[i] = '\n';
-	buf[i++] = '\0';
+	buf[++i] = '\0';
 	*line = buf;
 	free(buf);
 	return (j);
