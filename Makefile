@@ -1,4 +1,3 @@
-
 #	Names
 NAME_PIPEX		=	pipex
 
